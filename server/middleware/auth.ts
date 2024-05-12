@@ -26,7 +26,9 @@ const geSessionID = (event: H3Event<EventHandlerRequest>): string | null => {
 const validateLuciaSessionCookie = async (sessionID: string, event: H3Event<EventHandlerRequest>): Promise<void> => {
   const { user, session } = await lucia.validateSession(sessionID);
   if (!session) return appendLuciaSessionCookie(user, session, lucia.createBlankSessionCookie().serialize(), event);
-  return appendLuciaSessionCookie(user, session, lucia.createSessionCookie(sessionID).serialize(), event);
+  if (session.fresh) {
+    return appendLuciaSessionCookie(user, session, lucia.createSessionCookie(sessionID).serialize(), event);
+  }
 };
 
 const appendLuciaSessionCookie = (

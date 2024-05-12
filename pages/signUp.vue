@@ -1,7 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const { signUp } = useBasic();
+</script>
 
 <template>
-  <div>Page: signUp</div>
+  <div>
+    <h1>sign up</h1>
+    <button @click="signUp">click</button>
+  </div>
 </template>
 
 <style scoped></style>

@@ -1,1 +1,3 @@
-export default defineEventHandler(async event => {});
+export default defineEventHandler(event => {
+  return event.context.user;
+});

@@ -1,5 +1,14 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  modules: ['@pinia/nuxt', '@nuxt/eslint']
+  modules: [
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['storeToRefs', 'acceptHMRUpdate', 'defineStore']
+      }
+    ],
+    '@nuxt/eslint'
+  ],
+  imports: ['~/stores']
 });
