@@ -3,10 +3,10 @@ import * as zod from 'zod';
 export const userFormDataSchema = zod.object({
   userName: zod
     .string()
-    .regex(/^[a-z0-9_-]+$/g, 'userName must combine with English and digits')
     .min(1, 'username required')
     .min(3, 'userName is more than 3 characters')
-    .max(31, 'userName is less than 31 characters'),
+    .max(31, 'userName is less than 31 characters')
+    .regex(/^[a-zA-Z0-9_-]+$/g, 'userName must combine with English and digits'),
   password: zod
     .string()
     .min(1, 'password required')

@@ -11,7 +11,10 @@ export default defineEventHandler(async event => {
   const id: string = generateId(15);
   // insert to database
   try {
-    db.prepare('INSERT INTO user (id, user_name, password) VALUES (?, ?, ?)').run(id, form.userName, hashPassword);
+    db.prepare('INSERT INTO user (id, userName, password) VALUES (?, ?, ?)').run(id, form.userName, hashPassword);
+    return {
+      message: 'success'
+    };
   } catch (error) {
     if (error instanceof SqliteError && error.code === 'SQLITE_CONSTRAINT_UNIQUE') {
       throw createError({

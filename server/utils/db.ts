@@ -4,7 +4,7 @@ export const db = new sqlite(':memory:');
 
 db.exec(`CREATE TABLE IF NOT EXISTS user (
   id TEXT NOT NULL PRIMARY KEY,
-  user_name TEXT NOT NULL UNIQUE,
+  userName TEXT NOT NULL UNIQUE,
   password TEXT NOT NULL
 )`);
 

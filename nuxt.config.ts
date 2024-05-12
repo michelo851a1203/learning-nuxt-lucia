@@ -8,7 +8,13 @@ export default defineNuxtConfig({
         autoImports: ['storeToRefs', 'acceptHMRUpdate', 'defineStore']
       }
     ],
-    '@nuxt/eslint'
+    '@nuxt/eslint',
+    '@unocss/nuxt'
   ],
-  imports: ['~/stores']
+  unocss: {
+    preflight: true
+  },
+  imports: {
+    dirs: ['~/stores']
+  }
 });

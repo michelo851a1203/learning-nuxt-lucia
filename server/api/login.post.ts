@@ -5,7 +5,7 @@ import { validateUserFormData } from '~/utils/userValidate';
 export default defineEventHandler(async event => {
   const formData = await readFormData(event);
   const form = validateUserFormData(formData);
-  const existingUser = db.prepare('SELECT * FROM user WHERE user_name = ?').get(form.userName);
+  const existingUser = db.prepare('SELECT * FROM user WHERE userName = ?').get(form.userName);
 
   if (!existingUser) {
     throw createError({
@@ -31,4 +31,7 @@ export default defineEventHandler(async event => {
 
   const session = await lucia.createSession(existingUser.id, {});
   appendHeader(event, 'Set-Cookie', lucia.createSessionCookie(session.id).serialize());
+  return {
+    message: 'success'
+  };
 });

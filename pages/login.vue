@@ -5,7 +5,7 @@ const { login } = useBasic();
 <template>
   <div>
     <h1>Page: login</h1>
-    <button @click="login">click</button>
+    <button px-3 py-2 rounded-md bg-blue-400 @click="login">click</button>
   </div>
 </template>
 
