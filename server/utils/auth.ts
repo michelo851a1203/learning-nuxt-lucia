@@ -1,5 +1,5 @@
 import { BetterSqlite3Adapter } from '@lucia-auth/adapter-sqlite';
-import { Lucia } from 'lucia';
+import { Lucia, TimeSpan } from 'lucia';
 
 import { type DatabaseUser, db } from './db';
 
@@ -18,7 +18,8 @@ export const lucia = new Lucia(adapter, {
     return {
       userName: attribute.userName
     };
-  }
+  },
+  sessionExpiresIn: new TimeSpan(2, 'h')
 });
 
 declare module 'lucia' {
